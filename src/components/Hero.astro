@@ -47,12 +47,18 @@
         position: relative;
         min-height: 100dvh; 
         display: flex;
-        align-items: center;
+        align-items: center; /* Centra verticalmente */
         justify-content: center;
         text-align: center;
         overflow: hidden;
         background-color: var(--bg-main);
-        padding: 0 1.5rem;
+        
+        /* CORRECCIÓN: Padding Top para despegarse del Navbar */
+        /* 8rem = aprox 128px. El Navbar ocupa unos 80px, así que quedan 48px de aire */
+        padding-top: 8rem; 
+        padding-bottom: 4rem; /* Para equilibrar un poco abajo */
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
 
     /* --- FONDO ANIMADO --- */
@@ -93,7 +99,7 @@
     .hero-content {
         position: relative; z-index: 10;
         display: flex; flex-direction: column; align-items: center;
-        width: 100%; /* Asegura que ocupe el ancho disponible */
+        width: 100%;
         max-width: 900px;
     }
 
@@ -145,22 +151,18 @@
         line-height: 1.6;
     }
 
-    /* --- BOTONES (SOLUCIÓN) --- */
+    /* --- BOTONES --- */
     .actions {
         display: flex;
         flex-direction: column;
         gap: 1rem;
         width: 100%;
         max-width: 340px;
-        margin: 0 auto; /* Centrado extra de seguridad */
+        margin: 0 auto;
     }
 
     .btn-primary {
-        /* PROPIEDADES CLAVE PARA ARREGLARLO: */
-        display: flex;          /* 1. Activa Flexbox */
-        justify-content: center;/* 2. Centra horizontalmente */
-        align-items: center;    /* 3. Centra verticalmente */
-        
+        display: flex; justify-content: center; align-items: center;
         position: relative;
         background: var(--text-primary);
         color: var(--bg-main);
@@ -170,10 +172,10 @@
         font-size: 0.95rem;
         overflow: hidden;
         transition: transform 0.2s;
-        width: 100%;            /* 4. Ocupa todo el ancho */
+        width: 100%;
         border: 1px solid transparent;
-        text-decoration: none;  /* Quita subrayado de enlace */
-        box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+        text-decoration: none;
+        box-sizing: border-box;
     }
 
     .shine {
@@ -181,16 +183,12 @@
         background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
         transform: skewX(-20deg);
         animation: shine-move 3s infinite;
-        pointer-events: none; /* Para que no interfiera con el texto */
+        pointer-events: none;
     }
     @keyframes shine-move { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
 
     .btn-secondary {
-        /* MISMAS PROPIEDADES CLAVE: */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
+        display: flex; justify-content: center; align-items: center;
         padding: 14px 28px;
         border-radius: 50px;
         font-weight: 600;
@@ -212,7 +210,13 @@
 
     /* --- MEDIA QUERY: DESKTOP --- */
     @media (min-width: 768px) {
-        .hero { padding: 0 2rem; }
+        /* En PC podemos reducir un poco el padding top porque la pantalla es más alta */
+        .hero { 
+            padding-top: 6rem; 
+            padding-left: 2rem; 
+            padding-right: 2rem; 
+        }
+
         .badge { font-size: 0.9rem; padding: 8px 18px; }
         
         .actions {
