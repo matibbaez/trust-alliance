@@ -1,0 +1,277 @@
+---
+/* Projects.astro - Optimizado para Mobile & Notebooks */
+---
+
+<section id="proyectos" class="projects-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="pill">Casos de Éxito</span>
+            <h2>Transformando la <span class="text-gradient">Justicia Digital</span></h2>
+        </div>
+
+        <div class="projects-wrapper">
+            
+            <article class="project-card">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">Plataforma Web</span>
+                        <span class="tag">Gestión Legal</span>
+                    </div>
+                    <h3>ReclamARTe</h3>
+                    <p>Una solución integral para la gestión de reclamos administrativos. Automatización de flujos de trabajo y seguimiento en tiempo real para estudios jurídicos de alto volumen.</p>
+                    
+                    <ul class="stats">
+                        <li>
+                            <span class="stat-val">+40%</span>
+                            <span class="stat-label">Eficiencia</span>
+                        </li>
+                        <li>
+                            <span class="stat-val">24h</span>
+                            <span class="stat-label">Procesamiento</span>
+                        </li>
+                    </ul>
+
+                    <a href="#" class="btn-project">Ver Caso de Estudio <span class="arrow">→</span></a>
+                </div>
+
+                <div class="project-visual">
+                    <div class="glow-effect"></div>
+                    
+                    <div class="desktop-frame">
+                        <div class="browser-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <img 
+                            src="/reclamarte-image-desktop.png" 
+                            alt="Interfaz de ReclamARTe" 
+                            class="project-img"
+                        />
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card reverse">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">App Móvil / Web</span>
+                        <span class="tag">Consumo Masivo</span>
+                    </div>
+                    <h3>ReclamaYA</h3>
+                    <p>La inmediatez hecha software. Sistema de resolución de disputas express diseñado para el usuario final. Interfaz intuitiva enfocada en la conversión y la rapidez.</p>
+                    
+                    <ul class="stats">
+                        <li>
+                            <span class="stat-val">User First</span>
+                            <span class="stat-label">Diseño UX</span>
+                        </li>
+                        <li>
+                            <span class="stat-val">100%</span>
+                            <span class="stat-label">Digital</span>
+                        </li>
+                    </ul>
+
+                    <a href="#" class="btn-project">Ver Caso de Estudio <span class="arrow">→</span></a>
+                </div>
+
+                <div class="project-visual mobile-center">
+                    <div class="glow-effect secondary"></div>
+                    
+                    <div class="mobile-frame">
+                        <div class="notch"></div>
+                        <img 
+                            src="/reclamaya-imagen-mobile.png" 
+                            alt="App ReclamaYA en celular" 
+                            class="project-img"
+                        />
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    /* --- GENERAL LAYOUT (MOBILE FIRST) --- */
+    .projects-section {
+        padding: 6rem 0; /* Padding estándar mobile */
+        background-color: var(--bg-main);
+        overflow: hidden;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-header { text-align: center; margin-bottom: 4rem; }
+
+    .pill {
+        color: var(--accent);
+        font-size: 0.8rem; font-weight: 600;
+        letter-spacing: 2px; text-transform: uppercase;
+        margin-bottom: 0.8rem; display: block;
+    }
+
+    h2 { 
+        font-size: 2.5rem; /* Tamaño mobile */
+        line-height: 1.1; 
+        color: var(--text-primary); 
+    }
+    
+    .text-gradient {
+        background: linear-gradient(90deg, #fff, #94a3b8);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .projects-wrapper { 
+        display: flex; flex-direction: column; gap: 6rem; /* Espacio entre proyectos */
+    }
+    
+    /* Mobile: Stack vertical por defecto */
+    .project-card {
+        display: flex; flex-direction: column; gap: 3rem;
+    }
+    
+    /* En mobile el orden siempre es: Visual primero, contenido después (opcional, aquí lo dejamos normal) 
+       Pero si quisieras visual primero: .project-visual { order: -1; } 
+    */
+
+    /* --- TEXT CONTENT --- */
+    .project-content h3 { font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary); }
+    .project-content p { color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem; }
+    
+    .project-tags { display: flex; gap: 0.6rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+    .tag {
+        font-size: 0.75rem; color: var(--accent);
+        background: rgba(56, 189, 248, 0.1);
+        padding: 4px 12px; border-radius: 20px;
+        font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .stats {
+        display: flex; gap: 2rem; list-style: none; padding: 0; margin: 0 0 2rem 0;
+        border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;
+    }
+    .stat-val { display: block; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
+    .stat-label { font-size: 0.85rem; color: var(--text-secondary); }
+
+    .btn-project {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        color: var(--text-primary); font-weight: 600; 
+        transition: 0.3s; font-size: 1rem;
+    }
+    .btn-project:hover { color: var(--accent); gap: 0.8rem; }
+
+    /* --- VISUALS CONTAINER --- */
+    .project-visual {
+        position: relative;
+        padding: 1.5rem; /* Menos padding en mobile */
+        border-radius: 24px;
+        perspective: 1000px;
+        display: flex; justify-content: center; /* Centrar imagen */
+    }
+
+    .mobile-center { display: flex; justify-content: center; }
+
+    .glow-effect {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 200px; height: 200px; /* Glow más chico en mobile */
+        background: var(--accent); opacity: 0.15; filter: blur(60px);
+        border-radius: 50%; z-index: 0;
+    }
+    .glow-effect.secondary { background: #8b5cf6; }
+
+    /* --- DESKTOP FRAME (ReclamARTe) --- */
+    .desktop-frame {
+        position: relative; z-index: 1;
+        background: #0f172a;
+        border-radius: 8px; /* Radio menor en mobile */
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        width: 100%; max-width: 500px; /* Ancho máximo visual */
+        
+        /* Animación 3D sutil (menos rotación en mobile) */
+        transform: rotateY(-2deg) rotateX(2deg);
+        transition: transform 0.6s ease;
+    }
+    /* En mobile desactivamos el efecto hover 3D intenso para evitar saltos */
+    
+    .browser-header {
+        background: rgba(255,255,255,0.05);
+        padding: 8px 12px; display: flex; gap: 6px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; } /* Puntos más chicos */
+    .red { background: #ef4444; } .yellow { background: #eab308; } .green { background: #22c55e; }
+
+    /* --- MOBILE FRAME (ReclamaYA) --- */
+    .mobile-frame {
+        position: relative; z-index: 1;
+        width: 240px; /* Ancho cómodo en celulares */
+        border: 6px solid #1e293b; /* Borde más fino */
+        border-radius: 30px;
+        background: #000;
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+        overflow: hidden;
+        transform: rotateY(5deg);
+        transition: transform 0.6s ease;
+    }
+
+    .notch {
+        position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+        width: 80px; height: 20px;
+        background: #1e293b;
+        border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
+        z-index: 2;
+    }
+
+    /* --- IMAGENES --- */
+    .project-img { width: 100%; height: auto; display: block; }
+
+    /* --- MEDIA QUERY: TABLET & DESKTOP (> 768px) --- */
+    @media (min-width: 768px) {
+        .projects-section { padding: 10rem 0; }
+        .section-header { margin-bottom: 6rem; }
+        h2 { font-size: 3.5rem; }
+
+        .projects-wrapper { gap: 10rem; }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr; /* Layout 2 columnas */
+            gap: 4rem;
+        }
+
+        /* Invertir orden visual solo en desktop */
+        .project-card.reverse { direction: rtl; }
+        .project-card.reverse .project-content { direction: ltr; }
+
+        /* Estilos visuales desktop */
+        .project-content h3 { font-size: 2.5rem; }
+        .project-visual { padding: 3rem; }
+        .glow-effect { width: 300px; height: 300px; filter: blur(90px); }
+
+        /* Frames más grandes y con hover effect */
+        .desktop-frame {
+            border-radius: 12px;
+            transform: rotateY(-5deg) rotateX(2deg);
+        }
+        .project-visual:hover .desktop-frame {
+            transform: rotateY(0) rotateX(0) scale(1.02);
+        }
+
+        .mobile-frame {
+            width: 280px; 
+            border-width: 8px; border-radius: 40px;
+            transform: rotateY(10deg);
+        }
+        .project-visual:hover .mobile-frame {
+            transform: rotateY(0) scale(1.02);
+        }
+    }
+</style>

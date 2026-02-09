@@ -1,0 +1,26 @@
+// 1. Paleta de Colores
+$navy-900: #0a192f; // Fondo oscuro / Textos principales
+$navy-800: #112240; // Fondo secundario
+$blue-500: #007bff; // Azul Tech (Botones, Acentos)
+$blue-300: #64ffda; // Cyan (Detalles de innovación)
+$white: #e6f1ff;    // Blanco suave (no quema la vista)
+$gray-light: #f8f9fa;
+
+$font-heading: 'Outfit', sans-serif;
+$font-body: 'Inter', sans-serif;
+
+// 3. Espaciado y Layout
+$container-width: 1200px;
+$radius-sm: 4px;
+$radius-md: 8px;
+
+// 4. Mixins para media queries
+@mixin mobile {
+  @media (max-width: 768px) { @content; }
+}
+
+@mixin glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

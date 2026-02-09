@@ -1,0 +1,67 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<title>{title}</title>
+		<meta name="viewport" content="width=device-width" />
+        <meta name="description" content="Trust Alliance - Soluciones Digitales Jurídicas" />
+	</head>
+	<body>
+		<slot />
+        
+        <script>
+			import Lenis from '@studio-freight/lenis'
+
+			// 1. Configuración de Lenis
+			const lenis = new Lenis({
+				duration: 1.2,
+				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+				orientation: 'vertical',
+				gestureOrientation: 'vertical',
+				smoothWheel: true,
+			})
+
+			function raf(time: number) {
+				lenis.raf(time)
+				requestAnimationFrame(raf)
+			}
+
+			requestAnimationFrame(raf)
+
+			// 2. Interceptar clicks en links para scroll ultra suave
+			const links = document.querySelectorAll('a[href^="#"]');
+
+			links.forEach(anchor => {
+				anchor.addEventListener('click', (e) => {
+					e.preventDefault(); // Evita el salto brusco
+
+					// Usamos 'e.currentTarget' y le decimos a TS que es un Link (HTMLAnchorElement)
+					const element = e.currentTarget as HTMLAnchorElement;
+					const targetId = element.getAttribute('href');
+
+					if (targetId && targetId !== '#') {
+						const targetElement = document.querySelector(targetId);
+						
+						if (targetElement) {
+							// Lenis Scroll suave
+							lenis.scrollTo(targetElement as HTMLElement, {
+								offset: -100, // Espacio para el Navbar
+								duration: 1.5, // Tiempo de viaje
+								easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+							});
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,244 @@
+---
+/* Process.astro - Optimizado Mobile First */
+---
+
+<section id="metodo" class="process-section">
+    <div class="container">
+        <div class="process-grid">
+            
+            <div class="sticky-wrapper">
+                <div class="sticky-content">
+                    <span class="pill">El Blueprint</span>
+                    <h2>Ingeniería de <br><span class="text-gradient">Precisión</span></h2>
+                    <p class="description">
+                        No improvisamos. Aplicamos un protocolo de desarrollo riguroso, diseñado para mitigar riesgos y maximizar el impacto desde el día uno.
+                    </p>
+                    <a href="#contacto" class="btn-outline">Iniciar Auditoría →</a>
+                </div>
+            </div>
+
+            <div class="steps-wrapper">
+                <div class="timeline-line"></div> <div class="step-card reveal-on-scroll">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Diagnóstico Legal & Técnico</h3>
+                        <p>Analizamos la infraestructura actual y los cuellos de botella operativos de la firma. Entendemos la necesidad jurídica antes de escribir una línea de código.</p>
+                    </div>
+                </div>
+
+                <div class="step-card reveal-on-scroll">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Arquitectura Blindada</h3>
+                        <p>Diseñamos la solución priorizando la seguridad de datos (Data Privacy). Definimos stacks tecnológicos escalables y protocolos de encriptación.</p>
+                    </div>
+                </div>
+
+                <div class="step-card reveal-on-scroll">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Desarrollo Ágil</h3>
+                        <p>Sprints de trabajo quincenales. Vas viendo el progreso real del software. Feedback continuo para ajustar el rumbo sin perder tiempo.</p>
+                    </div>
+                </div>
+
+                <div class="step-card reveal-on-scroll">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Despliegue & Soporte</h3>
+                        <p>Lanzamiento controlado. Capacitación al equipo legal y soporte técnico 24/7 para asegurar que la operación nunca se detenga.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Script para animar la aparición de los pasos
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+        observer.observe(el);
+    });
+</script>
+
+<style>
+    /* --- GENERAL LAYOUT (MOBILE FIRST) --- */
+    .process-section {
+        padding: 6rem 0; /* Padding estándar mobile */
+        background-color: var(--bg-main);
+        position: relative;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Layout Stack Vertical (Mobile) */
+    .process-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        position: relative;
+    }
+
+    /* --- IZQUIERDA (HEADER) --- */
+    .sticky-wrapper {
+        position: relative;
+        /* En mobile no es sticky, es estático */
+    }
+
+    .sticky-content {
+        position: relative;
+        padding-right: 0;
+        text-align: center; /* Centrado en mobile para mejor lectura */
+    }
+
+    .pill {
+        color: var(--accent);
+        font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
+        margin-bottom: 0.8rem; display: block; font-weight: 600;
+    }
+
+    h2 {
+        font-size: 2.5rem; /* Tamaño mobile */
+        line-height: 1.1; margin-bottom: 1.5rem;
+        color: var(--text-primary);
+    }
+
+    .text-gradient {
+        background: linear-gradient(90deg, #fff, #94a3b8);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .description {
+        font-size: 1rem; margin-bottom: 2rem; color: var(--text-secondary);
+        max-width: 500px; margin-left: auto; margin-right: auto;
+    }
+
+    .btn-outline {
+        padding: 12px 28px;
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 50px; font-weight: 600; font-size: 0.9rem;
+        transition: 0.3s; display: inline-block;
+        color: var(--text-primary);
+    }
+    .btn-outline:hover {
+        border-color: var(--accent); color: var(--accent); background: rgba(56, 189, 248, 0.05);
+    }
+
+    /* --- DERECHA (PASOS) --- */
+    .steps-wrapper {
+        position: relative;
+        padding-left: 0; /* Sin padding izquierdo en mobile */
+        border-left: none; /* Sin borde en mobile */
+    }
+
+    /* Línea decorativa (Oculta en mobile) */
+    .timeline-line { display: none; }
+
+    .step-card {
+        margin-bottom: 3.5rem; /* Espacio reducido en mobile */
+        opacity: 0.3; 
+        transform: translateY(20px); /* Animación vertical en mobile es más natural */
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex; 
+        flex-direction: column; /* Stack vertical en mobile */
+        gap: 1rem;
+        align-items: center; /* Centrado en mobile */
+        text-align: center;
+    }
+
+    .step-card:last-child { margin-bottom: 0; }
+
+    .step-card.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .step-number {
+        font-family: var(--font-heading);
+        font-size: 3rem; /* Más chico en mobile */
+        font-weight: 800;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+        line-height: 1;
+        transition: 0.3s;
+    }
+
+    .step-card.active .step-number {
+        -webkit-text-stroke: 1px var(--accent);
+        text-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .step-content { padding-top: 0; max-width: 500px; }
+
+    .step-content h3 { font-size: 1.5rem; margin-bottom: 0.8rem; color: var(--text-primary); }
+    .step-content p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
+
+
+    /* --- TABLET & DESKTOP (> 900px) --- */
+    @media (min-width: 900px) {
+        .process-section { padding: 10rem 0; }
+
+        /* Grid de 2 columnas */
+        .process-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+        }
+
+        /* Izquierda Sticky */
+        .sticky-content {
+            position: sticky;
+            top: 150px;
+            padding-right: 2rem;
+            text-align: left; /* Alineación izquierda original */
+        }
+
+        h2 { font-size: 3.5rem; }
+        .description { margin-left: 0; margin-right: 0; font-size: 1.1rem; }
+
+        /* Steps wrapper con línea lateral */
+        .steps-wrapper {
+            padding-left: 2rem;
+            border-left: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .timeline-line {
+            display: block;
+            position: absolute; left: -1px; top: 0;
+            width: 1px; height: 150px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            box-shadow: 0 0 10px var(--accent);
+            z-index: 10;
+        }
+
+        /* Step Card Horizontal */
+        .step-card {
+            flex-direction: row; /* Lado a lado */
+            gap: 2rem;
+            align-items: flex-start;
+            text-align: left;
+            margin-bottom: 6rem;
+            transform: translateX(30px); /* Animación horizontal */
+        }
+
+        .step-card.active { transform: translateX(0); }
+
+        .step-number { font-size: 4rem; }
+        .step-content { padding-top: 1rem; }
+        .step-content h3 { font-size: 1.8rem; }
+        .step-content p { font-size: 1rem; }
+    }
+</style>
