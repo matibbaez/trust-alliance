@@ -20,7 +20,7 @@
         </h1>
 
         <p class="animate-in" style="animation-delay: 0.3s">
-            En <strong>Trust Alliance</strong> desarrollamos el ecosistema digital que tu firma necesita. 
+            En <strong>Trust Alliance</strong> desarrollamos el ecosistema digital que tu firma necesita.
             Seguridad de grado militar, creatividad estratégica y código de alto rendimiento.
         </p>
 
@@ -47,26 +47,22 @@
         position: relative;
         min-height: 100dvh; 
         display: flex;
-        align-items: center; /* Centra verticalmente */
+        align-items: center;
         justify-content: center;
         text-align: center;
         overflow: hidden;
         background-color: var(--bg-main);
-        
-        /* CORRECCIÓN: Padding Top para despegarse del Navbar */
-        /* 8rem = aprox 128px. El Navbar ocupa unos 80px, así que quedan 48px de aire */
-        padding-top: 8rem; 
-        padding-bottom: 4rem; /* Para equilibrar un poco abajo */
+        padding-top: 8rem;
+        padding-bottom: 4rem; 
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
 
-    /* --- FONDO ANIMADO --- */
+    /* --- FONDO ANIMADO ORIGINAL --- */
     .hero-bg {
         position: absolute; inset: 0; overflow: hidden; z-index: 0;
     }
 
-    /* Grilla 3D */
     .moving-grid {
         position: absolute;
         width: 200%; height: 200%;
@@ -85,7 +81,6 @@
         100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
     }
 
-    /* Luz superior */
     .spotlight {
         position: absolute;
         top: -20%; left: 50%; transform: translateX(-50%);
@@ -117,15 +112,17 @@
     }
 
     .status-dot {
-        width: 6px; height: 6px; background: #22c55e; border-radius: 50%;
-        box-shadow: 0 0 8px #22c55e;
+        width: 6px; height: 6px; 
+        background: #38bdf8; 
+        border-radius: 50%;
+        box-shadow: 0 0 8px #38bdf8;
         animation: blink 2s infinite;
     }
     @keyframes blink { 50% { opacity: 0.5; } }
 
     /* Títulos */
     h1 {
-        font-size: clamp(2.5rem, 5vw, 4.5rem); 
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
         line-height: 1.1;
         letter-spacing: -0.02em;
         margin-bottom: 1.5rem;
@@ -133,15 +130,26 @@
         padding: 0 0.5rem;
     }
 
+    /* Reemplaza tu .gradient-text y @keyframes actual por esto: */
     .gradient-text {
-        background: linear-gradient(to right, #fff 20%, #94a3b8 50%, #fff 80%);
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: shine-text 5s linear infinite;
-        display: inline-block;
+        /* Color base fijo */
+        color: #38bdf8;
+        /* Sombra base sutil */
+        text-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        /* Animamos el brillo general */
+        animation: smooth-fade 4s ease-in-out infinite alternate;
     }
-    @keyframes shine-text { to { background-position: 200% center; } }
+    
+    @keyframes smooth-fade {
+        0% {
+            filter: brightness(1); /* Celeste normal */
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+        100% {
+            filter: brightness(1.6); /* Se vuelve casi blanco/celeste muy claro */
+            text-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+        }
+    }
 
     p {
         font-size: clamp(1rem, 2vw, 1.2rem);
@@ -171,15 +179,23 @@
         font-weight: 700;
         font-size: 0.95rem;
         overflow: hidden;
-        transition: transform 0.2s;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición más suave */
         width: 100%;
         border: 1px solid transparent;
         text-decoration: none;
         box-sizing: border-box;
     }
 
+    /* NUEVO HOVER PARA EL BOTÓN PRIMARIO */
+    .btn-primary:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4); /* Resplandor celeste */
+        background: #ffffff;
+    }
+
     .shine {
-        position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+        position: absolute; top: 0; left: -100%;
+        width: 50%; height: 100%;
         background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
         transform: skewX(-20deg);
         animation: shine-move 3s infinite;
@@ -188,7 +204,8 @@
     @keyframes shine-move { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
 
     .btn-secondary {
-        display: flex; justify-content: center; align-items: center;
+        display: flex;
+        justify-content: center; align-items: center;
         padding: 14px 28px;
         border-radius: 50px;
         font-weight: 600;
@@ -197,22 +214,30 @@
         backdrop-filter: blur(10px);
         color: var(--text-primary);
         width: 100%;
-        transition: 0.3s;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         text-decoration: none;
         box-sizing: border-box;
     }
 
+    /* NUEVO HOVER PARA EL BOTÓN SECUNDARIO */
+    .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1); /* Se aclara un poco el cristal */
+        border-color: rgba(56, 189, 248, 0.5); /* Borde se ilumina con el color principal */
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
     .hero-fade {
-        position: absolute; bottom: 0; left: 0; width: 100%; height: 100px;
+        position: absolute; bottom: 0; left: 0;
+        width: 100%; height: 100px;
         background: linear-gradient(to top, var(--bg-main), transparent);
         pointer-events: none; z-index: 5;
     }
 
     /* --- MEDIA QUERY: DESKTOP --- */
     @media (min-width: 768px) {
-        /* En PC podemos reducir un poco el padding top porque la pantalla es más alta */
         .hero { 
-            padding-top: 6rem; 
+            padding-top: 6rem;
             padding-left: 2rem; 
             padding-right: 2rem; 
         }
