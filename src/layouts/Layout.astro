@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
 interface Props {
@@ -14,54 +15,83 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<meta name="viewport" content="width=device-width" />
         <meta name="description" content="Trust Alliance - Soluciones Digitales Jurídicas" />
+        
+        <ClientRouter /> 
 	</head>
 	<body>
 		<slot />
         
         <script>
-			import Lenis from '@studio-freight/lenis'
+            import Lenis from '@studio-freight/lenis'
 
-			// 1. Configuración de Lenis
-			const lenis = new Lenis({
-				duration: 1.2,
-				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-				orientation: 'vertical',
-				gestureOrientation: 'vertical',
-				smoothWheel: true,
-			})
+            // Envolvemos todo en astro:page-load para que Lenis se vuelva a cargar 
+            // cada vez que la página hace la transición animada
+            document.addEventListener('astro:page-load', () => {
+                
+                // 1. Configuración de Lenis
+                const lenis = new Lenis({
+                    duration: 1.2,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    orientation: 'vertical',
+                    gestureOrientation: 'vertical',
+                    smoothWheel: true,
+                })
 
-			function raf(time: number) {
-				lenis.raf(time)
-				requestAnimationFrame(raf)
-			}
+                function raf(time: number) {
+                    lenis.raf(time)
+                    requestAnimationFrame(raf)
+                }
 
-			requestAnimationFrame(raf)
+                requestAnimationFrame(raf)
 
-			// 2. Interceptar clicks en links para scroll ultra suave
-			const links = document.querySelectorAll('a[href^="#"]');
+                // 2. Interceptar clicks en links para scroll ultra suave
+                const links = document.querySelectorAll('a[href*="#"]');
 
-			links.forEach(anchor => {
-				anchor.addEventListener('click', (e) => {
-					e.preventDefault(); // Evita el salto brusco
+                links.forEach(anchor => {
+                    anchor.addEventListener('click', (e) => {
+                        const element = e.currentTarget as HTMLAnchorElement;
+                        const href = element.getAttribute('href');
 
-					// Usamos 'e.currentTarget' y le decimos a TS que es un Link (HTMLAnchorElement)
-					const element = e.currentTarget as HTMLAnchorElement;
-					const targetId = element.getAttribute('href');
+                        if (!href || href === '#') return;
 
-					if (targetId && targetId !== '#') {
-						const targetElement = document.querySelector(targetId);
-						
-						if (targetElement) {
-							// Lenis Scroll suave
-							lenis.scrollTo(targetElement as HTMLElement, {
-								offset: -100, // Espacio para el Navbar
-								duration: 1.5, // Tiempo de viaje
-								easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-							});
-						}
-					}
-				});
-			});
-		</script>
+                        const [path, hash] = href.split('#');
+                        
+                        const currentPath = window.location.pathname;
+                        const isHome = currentPath === '/' || currentPath === '/index.html';
+                        const linkPointsToHome = path === '' || path === '/';
+
+                        if (isHome && linkPointsToHome && hash) {
+                            e.preventDefault(); 
+
+                            const targetElement = document.querySelector('#' + hash);
+                            if (targetElement) {
+                                lenis.scrollTo(targetElement as HTMLElement, {
+                                    offset: -100, 
+                                    duration: 1.5,
+                                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                                });
+                            }
+                        }
+                    });
+                });
+
+                // 3. Manejar la carga inicial si venimos de OTRA página
+                if (window.location.hash) {
+                    const targetElement = document.querySelector(window.location.hash);
+                    
+                    if (targetElement) {
+                        window.scrollTo(0, 0); 
+                        
+                        setTimeout(() => {
+                            lenis.scrollTo(targetElement as HTMLElement, {
+                                offset: -100,
+                                duration: 1.5,
+                                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                            });
+                        }, 150);
+                    }
+                }
+            });
+        </script>
 	</body>
 </html>

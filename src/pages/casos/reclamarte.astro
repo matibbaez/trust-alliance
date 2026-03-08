@@ -1,0 +1,307 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Caso de Estudio: ReclamARTe | Trust Alliance">
+	<Navbar />
+	
+	<main class="case-wrapper">
+        <div class="ambient-glow"></div>
+
+		<section class="case-hero">
+            <div class="container">
+                <a href="/#proyectos" class="back-link animate-in" style="animation-delay: 0.1s">
+                    <span class="arrow">←</span> Volver a Proyectos
+                </a>
+                
+                <div class="hero-grid">
+                    <div class="hero-text">
+                        <div class="badge-wrapper animate-in" style="animation-delay: 0.2s">
+                            <span class="badge"><span class="status-dot"></span>Plataforma Web</span>
+                        </div>
+                        <h1 class="animate-in" style="animation-delay: 0.3s">Reclam<span class="text-gradient">ARTe</span></h1>
+                        <p class="lead animate-in" style="animation-delay: 0.4s">Automatización de flujos de trabajo y seguimiento en tiempo real para estudios jurídicos de alto volumen.</p>
+                        
+                        <div class="tags animate-in" style="animation-delay: 0.5s">
+                            <span class="tag">Gestión Legal</span>
+                            <span class="tag">Automatización</span>
+                            <span class="tag">Escalabilidad</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual animate-in" style="animation-delay: 0.6s">
+                        <div class="glow-effect"></div>
+                        <div class="glass-frame">
+                            <div class="browser-header">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <img src="/reclamarte-image-desktop.png" alt="Dashboard de ReclamARTe" class="project-img" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-body">
+            <div class="container">
+                <div class="body-grid">
+                    
+                    <aside class="sidebar fade-up">
+                        <div class="sticky-content">
+                            <h3>Impacto Directo</h3>
+                            <div class="metrics-bento">
+                                <div class="metric-card">
+                                    <span class="metric-value">+40%</span>
+                                    <span class="metric-label">Eficiencia operativa</span>
+                                </div>
+                                <div class="metric-card">
+                                    <span class="metric-value">24h</span>
+                                    <span class="metric-label">Procesamiento promedio</span>
+                                </div>
+                                <div class="metric-card full-width">
+                                    <span class="metric-value">100%</span>
+                                    <span class="metric-label">Trazabilidad de expedientes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <article class="content">
+                        <h2 class="fade-up">El Desafío</h2>
+                        <p class="fade-up">Antes de la implementación, el estudio jurídico enfrentaba un cuello de botella crítico: la gestión manual de cientos de reclamos administrativos. La dependencia del papel y las hojas de cálculo generaba demoras, pérdida de información y una barrera técnica para escalar el volumen de clientes.</p>
+
+                        <h2 class="fade-up">Nuestra Solución</h2>
+                        <p class="fade-up">En <strong>Trust Alliance</strong>, no implementamos una plantilla. Construimos una arquitectura de software a medida centrada en la seguridad y la velocidad.</p>
+                        
+                        <ul class="feature-list fade-up">
+                            <li>
+                                <strong>Smart Workflows:</strong> Digitalización completa del ciclo de vida del reclamo, desde el alta hasta la resolución.
+                            </li>
+                            <li>
+                                <strong>Seguridad de Grado Legal:</strong> Encriptación de documentos sensibles y control de accesos por roles para el equipo de abogados.
+                            </li>
+                            <li>
+                                <strong>Business Intelligence:</strong> Paneles de control en tiempo real para evaluar el rendimiento del estudio y detectar bloqueos operativos.
+                            </li>
+                        </ul>
+
+                        <div class="quote-card fade-up">
+                            <p>"La plataforma no solo organizó nuestro trabajo, sino que nos permitió triplicar nuestra cartera de clientes sin necesidad de contratar más personal administrativo."</p>
+                        </div>
+
+                        <h2 class="fade-up">El Resultado</h2>
+                        <p class="fade-up">Hoy, ReclamARTe procesa reclamos de manera ágil y transparente, devolviéndole al abogado su tiempo para que se enfoque en la estrategia legal, mientras la infraestructura digital se encarga del trabajo pesado.</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="case-cta fade-up">
+            <div class="container">
+                <div class="cta-box">
+                    <h2>¿Buscás resultados similares?</h2>
+                    <p>Construyamos la infraestructura digital que tu firma necesita.</p>
+                    <a href="/#contacto" class="btn-primary">Iniciar Proyecto Ahora</a>
+                </div>
+            </div>
+        </section>
+	</main>
+
+    <Footer />
+</Layout>
+
+<script>
+    // Cambiamos DOMContentLoaded por astro:page-load
+    document.addEventListener("astro:page-load", () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { 
+            threshold: 0.1, 
+            rootMargin: "0px 0px -50px 0px" 
+        });
+
+        document.querySelectorAll('.fade-up').forEach((el) => {
+            observer.observe(el);
+        });
+    });
+</script>
+
+<style>
+    /* --- VARIABLES Y ESTRUCTURA BASE --- */
+    .case-wrapper {
+        background-color: var(--bg-main);
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ambient-glow {
+        position: absolute;
+        top: -10%; left: 50%; transform: translateX(-50%);
+        width: 100vw; height: 800px;
+        background: radial-gradient(ellipse at top, rgba(56, 189, 248, 0.08), transparent 60%);
+        pointer-events: none; z-index: 0;
+        opacity: 0;
+        animation: glowFadeIn 2s ease-out forwards;
+    }
+
+    @keyframes glowFadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .container {
+        position: relative;
+        z-index: 10;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    /* --- CLASE DE ANIMACIÓN AL SCROLLEAR --- */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* --- BOTÓN VOLVER --- */
+    .back-link {
+        display: inline-flex; align-items: center; gap: 8px;
+        color: var(--text-secondary); font-weight: 600; font-size: 0.9rem;
+        margin-top: 120px; margin-bottom: 3rem;
+        transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--text-primary); }
+    .back-link .arrow { transition: transform 0.3s; }
+    .back-link:hover .arrow { transform: translateX(-5px); }
+
+    /* --- HERO DEL CASO --- */
+    .hero-grid {
+        display: grid; grid-template-columns: 1fr; gap: 4rem;
+        margin-bottom: 6rem; align-items: center;
+    }
+
+    .badge-wrapper { margin-bottom: 1.5rem; }
+    .badge {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 6px 14px; background: rgba(56, 189, 248, 0.1);
+        border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 50px;
+        font-size: 0.8rem; font-weight: 600; color: var(--accent);
+    }
+    .status-dot {
+        width: 6px; height: 6px; background: var(--accent);
+        border-radius: 50%; box-shadow: 0 0 8px var(--accent);
+    }
+
+    .hero-text h1 {
+        font-size: clamp(3rem, 6vw, 4.5rem);
+        line-height: 1.1; margin-bottom: 1.5rem; color: var(--text-primary);
+    }
+    .text-gradient {
+        background: linear-gradient(90deg, #fff, #38bdf8);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .lead { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; }
+
+    .tags { display: flex; gap: 10px; flex-wrap: wrap; }
+    .tag {
+        font-size: 0.8rem; color: var(--text-primary);
+        background: rgba(255,255,255,0.05); padding: 6px 16px;
+        border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* --- VISUAL HERO --- */
+    .hero-visual { position: relative; perspective: 1000px; }
+    .glow-effect {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 80%; height: 80%; background: var(--accent);
+        opacity: 0.2; filter: blur(80px); border-radius: 50%;
+    }
+    .glass-frame {
+        position: relative; z-index: 1;
+        background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;
+        overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        transform: rotateY(-5deg) rotateX(5deg);
+        transition: transform 0.5s ease;
+    }
+    .glass-frame:hover { transform: rotateY(0) rotateX(0) scale(1.02); }
+    .browser-header {
+        background: rgba(255,255,255,0.03); padding: 12px 16px;
+        display: flex; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .red { background: #ef4444; } .yellow { background: #eab308; } .green { background: #22c55e; }
+    .project-img { width: 100%; height: auto; display: block; }
+
+    /* --- BODY GRID --- */
+    .body-grid {
+        display: grid; grid-template-columns: 1fr; gap: 4rem;
+        padding-bottom: 6rem;
+    }
+
+    /* SIDEBAR (Métricas) */
+    .sidebar h3 { font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1.5rem; }
+    .metrics-bento { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .metric-card {
+        background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+        padding: 1.5rem; border-radius: 16px;
+        display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .metric-card.full-width { grid-column: 1 / -1; background: linear-gradient(145deg, rgba(56, 189, 248, 0.1), rgba(255,255,255,0.02)); border-color: rgba(56, 189, 248, 0.2); }
+    .metric-value { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 800; color: var(--text-primary); line-height: 1; }
+    .metric-label { font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* CONTENIDO NARRATIVO */
+    .content h2 { font-size: 2rem; color: var(--text-primary); margin: 0 0 1.5rem 0; }
+    .content h2:not(:first-child) { margin-top: 4rem; }
+    .content p { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; }
+    .content strong { color: var(--text-primary); }
+
+    .feature-list { list-style: none; padding: 0; margin: 2rem 0; display: flex; flex-direction: column; gap: 1.5rem; }
+    .feature-list li { position: relative; padding-left: 2rem; color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; }
+    .feature-list li::before { content: '✦'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
+
+    .quote-card {
+        margin: 3rem 0; padding: 2rem; border-left: 4px solid var(--accent);
+        background: rgba(255,255,255,0.03); border-radius: 0 16px 16px 0;
+    }
+    .quote-card p { font-size: 1.3rem; font-style: italic; color: var(--text-primary); margin: 0; }
+
+    /* --- CTA BOTTOM --- */
+    .case-cta { padding: 6rem 0; border-top: 1px solid rgba(255,255,255,0.05); }
+    .cta-box {
+        text-align: center; background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.1);
+        padding: 4rem 2rem; border-radius: 24px;
+    }
+    .cta-box h2 { font-size: 2.5rem; color: var(--text-primary); margin-bottom: 1rem; }
+    .cta-box p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; }
+    .btn-primary {
+        display: inline-block; background: var(--text-primary); color: var(--bg-main);
+        padding: 16px 32px; border-radius: 50px; font-weight: 700; transition: all 0.3s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255,255,255,0.2); }
+
+    /* --- DESKTOP QUERIES --- */
+    @media (min-width: 900px) {
+        .hero-grid { grid-template-columns: 1fr 1fr; }
+        .body-grid { grid-template-columns: 1fr 2fr; /* 1 parte sidebar, 2 partes contenido */ }
+        .sticky-content { position: sticky; top: 120px; }
+    }
+</style>

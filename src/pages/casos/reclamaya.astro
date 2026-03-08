@@ -1,0 +1,321 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Caso de Estudio: ReclamaYA | Trust Alliance">
+	<Navbar />
+	
+	<main class="case-wrapper reclamaya-theme">
+        <div class="ambient-glow"></div>
+
+		<section class="case-hero">
+            <div class="container">
+                <a href="/#proyectos" class="back-link animate-in" style="animation-delay: 0.1s">
+                    <span class="arrow">←</span> Volver a Proyectos
+                </a>
+                
+                <div class="hero-grid">
+                    <div class="hero-text">
+                        <div class="badge-wrapper animate-in" style="animation-delay: 0.2s">
+                            <span class="badge"><span class="status-dot"></span>App Móvil / Web</span>
+                        </div>
+                        <h1 class="animate-in" style="animation-delay: 0.3s">Reclama<span class="text-gradient">YA</span></h1>
+                        <p class="lead animate-in" style="animation-delay: 0.4s">La inmediatez hecha software. Sistema de resolución de disputas express diseñado para el usuario final.</p>
+                        
+                        <div class="tags animate-in" style="animation-delay: 0.5s">
+                            <span class="tag">Consumo Masivo</span>
+                            <span class="tag">LegalTech</span>
+                            <span class="tag">UX/UI Design</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual animate-in" style="animation-delay: 0.6s">
+                        <div class="glow-effect"></div>
+                        <div class="mobile-glass-frame">
+                            <div class="notch"></div>
+                            <img src="/reclamaya-imagen-mobile.png" alt="App ReclamaYA en celular" class="project-img" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-body">
+            <div class="container">
+                <div class="body-grid">
+                    
+                    <aside class="sidebar fade-up">
+                        <div class="sticky-content">
+                            <h3>Impacto Directo</h3>
+                            <div class="metrics-bento">
+                                <div class="metric-card">
+                                    <span class="metric-value">100%</span>
+                                    <span class="metric-label">Digital y Remoto</span>
+                                </div>
+                                <div class="metric-card">
+                                    <span class="metric-value">UX</span>
+                                    <span class="metric-label">Diseño Centrado en el Usuario</span>
+                                </div>
+                                <div class="metric-card full-width">
+                                    <span class="metric-value">3 Pasos</span>
+                                    <span class="metric-label">Para iniciar un reclamo formal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <article class="content">
+                        <h2 class="fade-up">El Desafío</h2>
+                        <p class="fade-up">Históricamente, iniciar un reclamo contra una aseguradora o gran empresa ha sido un proceso burocrático, frustrante y opaco para el consumidor promedio. El desafío era transformar un trámite legal complejo en una experiencia tan sencilla como pedir comida por una app.</p>
+
+                        <h2 class="fade-up">Nuestra Solución</h2>
+                        <p class="fade-up">Diseñamos <strong>ReclamaYA</strong> desde la empatía con el usuario. Eliminamos la jerga legal incomprensible y creamos una interfaz fluida que guía al consumidor paso a paso.</p>
+                        
+                        <ul class="feature-list fade-up">
+                            <li>
+                                <strong>Fricción Cero:</strong> Proceso de onboarding (registro) optimizado para capturar solo la información estrictamente necesaria.
+                            </li>
+                            <li>
+                                <strong>Firma Digital Integrada:</strong> Permite a los usuarios otorgar poder a los abogados directamente desde la pantalla de su smartphone, sin imprimir un solo papel.
+                            </li>
+                            <li>
+                                <strong>Notificaciones Push:</strong> Mantiene al cliente informado en tiempo real sobre el estado de su indemnización, reduciendo drásticamente las consultas por WhatsApp o teléfono.
+                            </li>
+                        </ul>
+
+                        <div class="quote-card fade-up">
+                            <p>"Logramos convertir la ansiedad de un siniestro en una experiencia de usuario contenida, transparente y 100% resolutiva desde el celular."</p>
+                        </div>
+
+                        <h2 class="fade-up">El Resultado</h2>
+                        <p class="fade-up">ReclamaYA se posiciona como una herramienta de conversión masiva para estudios jurídicos, democratizando el acceso a la justicia y acelerando los tiempos de liquidación de siniestros al estandarizar la entrada de datos.</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="case-cta fade-up">
+            <div class="container">
+                <div class="cta-box">
+                    <h2>¿Listo para digitalizar tu servicio?</h2>
+                    <p>Lleva tu estudio jurídico al bolsillo de tus clientes.</p>
+                    <a href="/#contacto" class="btn-primary">Agendar Asesoría</a>
+                </div>
+            </div>
+        </section>
+	</main>
+
+    <Footer />
+</Layout>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { 
+            threshold: 0.1, 
+            rootMargin: "0px 0px -50px 0px" 
+        });
+
+        document.querySelectorAll('.fade-up').forEach((el) => {
+            observer.observe(el);
+        });
+    });
+</script>
+
+<style>
+    /* --- VARIABLES ESPECÍFICAS DE RECLAMAYA --- */
+    .reclamaya-theme {
+        --case-accent: #8b5cf6; /* Violeta vibrante */
+        --case-glow: rgba(139, 92, 246, 0.15);
+    }
+
+    /* --- ESTRUCTURA BASE --- */
+    .case-wrapper {
+        background-color: var(--bg-main);
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ambient-glow {
+        position: absolute;
+        top: -10%; left: 50%; transform: translateX(-50%);
+        width: 100vw; height: 800px;
+        background: radial-gradient(ellipse at top, var(--case-glow), transparent 60%);
+        pointer-events: none; z-index: 0;
+        opacity: 0;
+        animation: glowFadeIn 2s ease-out forwards;
+    }
+
+    @keyframes glowFadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .container {
+        position: relative;
+        z-index: 10;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* --- BOTÓN VOLVER --- */
+    .back-link {
+        display: inline-flex; align-items: center; gap: 8px;
+        color: var(--text-secondary); font-weight: 600; font-size: 0.9rem;
+        margin-top: 120px; margin-bottom: 3rem;
+        transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--text-primary); }
+    .back-link .arrow { transition: transform 0.3s; }
+    .back-link:hover .arrow { transform: translateX(-5px); }
+
+    /* --- HERO --- */
+    .hero-grid {
+        display: grid; grid-template-columns: 1fr; gap: 4rem;
+        margin-bottom: 6rem; align-items: center;
+    }
+
+    .badge-wrapper { margin-bottom: 1.5rem; }
+    .badge {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 6px 14px; background: rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 50px;
+        font-size: 0.8rem; font-weight: 600; color: var(--case-accent);
+    }
+    .status-dot {
+        width: 6px; height: 6px; background: var(--case-accent);
+        border-radius: 50%; box-shadow: 0 0 8px var(--case-accent);
+    }
+
+    .hero-text h1 {
+        font-size: clamp(3rem, 6vw, 4.5rem);
+        line-height: 1.1; margin-bottom: 1.5rem; color: var(--text-primary);
+    }
+    .text-gradient {
+        background: linear-gradient(90deg, #fff, var(--case-accent));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .lead { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; }
+
+    .tags { display: flex; gap: 10px; flex-wrap: wrap; }
+    .tag {
+        font-size: 0.8rem; color: var(--text-primary);
+        background: rgba(255,255,255,0.05); padding: 6px 16px;
+        border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* --- VISUAL HERO (MOBILE FRAME) --- */
+    .hero-visual { 
+        position: relative; perspective: 1000px; 
+        display: flex; justify-content: center; /* Centrar el celular */
+    }
+    .glow-effect {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 300px; height: 300px; background: var(--case-accent);
+        opacity: 0.15; filter: blur(80px); border-radius: 50%;
+    }
+    
+    /* Marco estilo iPhone */
+    .mobile-glass-frame {
+        position: relative; z-index: 1;
+        width: 280px; /* Ancho típico de un mockup de celular */
+        background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px);
+        border: 8px solid #1e293b; /* Borde grueso simulando el teléfono */
+        border-radius: 40px;
+        overflow: hidden; 
+        box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.1);
+        transform: rotateY(-10deg) rotateX(5deg);
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-glass-frame:hover { transform: rotateY(0) rotateX(0) scale(1.03); }
+    
+    /* Muesca del celular (Notch) */
+    .notch {
+        position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+        width: 100px; height: 24px; background: #1e293b;
+        border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
+        z-index: 10;
+    }
+
+    .project-img { width: 100%; height: auto; display: block; }
+
+    /* --- BODY GRID --- */
+    .body-grid {
+        display: grid; grid-template-columns: 1fr; gap: 4rem;
+        padding-bottom: 6rem;
+    }
+
+    /* SIDEBAR (Métricas) */
+    .sidebar h3 { font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1.5rem; }
+    .metrics-bento { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .metric-card {
+        background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+        padding: 1.5rem; border-radius: 16px;
+        display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .metric-card.full-width { 
+        grid-column: 1 / -1; 
+        background: linear-gradient(145deg, rgba(139, 92, 246, 0.1), rgba(255,255,255,0.02)); 
+        border-color: rgba(139, 92, 246, 0.2); 
+    }
+    .metric-value { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--text-primary); line-height: 1; }
+    .metric-label { font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* CONTENIDO NARRATIVO */
+    .content h2 { font-size: 2rem; color: var(--text-primary); margin: 0 0 1.5rem 0; }
+    .content h2:not(:first-child) { margin-top: 4rem; }
+    .content p { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; }
+    .content strong { color: var(--text-primary); }
+
+    .feature-list { list-style: none; padding: 0; margin: 2rem 0; display: flex; flex-direction: column; gap: 1.5rem; }
+    .feature-list li { position: relative; padding-left: 2rem; color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; }
+    .feature-list li::before { content: '✦'; position: absolute; left: 0; color: var(--case-accent); font-size: 1.2rem; }
+
+    .quote-card {
+        margin: 3rem 0; padding: 2rem; border-left: 4px solid var(--case-accent);
+        background: rgba(255,255,255,0.03); border-radius: 0 16px 16px 0;
+    }
+    .quote-card p { font-size: 1.3rem; font-style: italic; color: var(--text-primary); margin: 0; }
+
+    /* --- CTA BOTTOM --- */
+    .case-cta { padding: 6rem 0; border-top: 1px solid rgba(255,255,255,0.05); }
+    .cta-box {
+        text-align: center; background: rgba(139, 92, 246, 0.05); border: 1px solid rgba(139, 92, 246, 0.1);
+        padding: 4rem 2rem; border-radius: 24px;
+    }
+    .cta-box h2 { font-size: 2.5rem; color: var(--text-primary); margin-bottom: 1rem; }
+    .cta-box p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; }
+    .btn-primary {
+        display: inline-block; background: var(--text-primary); color: var(--bg-main);
+        padding: 16px 32px; border-radius: 50px; font-weight: 700; transition: all 0.3s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255,255,255,0.2); }
+
+    /* --- DESKTOP QUERIES --- */
+    @media (min-width: 900px) {
+        .hero-grid { grid-template-columns: 1.2fr 0.8fr; } /* Le damos un poco más de espacio al texto frente al celular */
+        .body-grid { grid-template-columns: 1fr 2fr; }
+        .sticky-content { position: sticky; top: 120px; }
+    }
+</style>

@@ -1,0 +1,268 @@
+---
+/* Ecosystem.astro - Sección Dual Target */
+---
+
+<section id="ecosistema" class="ecosystem-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="pill">Plataforma Integral</span>
+            <h2>Conectamos <span class="text-gradient">abogados y clientes</span></h2>
+            <p class="subtitle">
+                Transformamos el modelo tradicional del derecho en una plataforma digital diseñada para potenciar a ambas partes.
+            </p>
+        </div>
+
+        <div class="cards-wrapper">
+            
+            <div class="eco-card firm-card reveal-on-scroll">
+                <div class="card-glow glow-blue"></div>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-blue"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    </div>
+                    <h3>Para el Estudio Jurídico</h3>
+                    <p class="card-desc">Herramientas tecnológicas avanzadas para optimizar el trabajo y escalar el volumen de casos.</p>
+                    
+                    <ul class="eco-features">
+                        <li>
+                            <span class="bullet"></span>
+                            <div>
+                                <strong>Automatización Legal</strong>
+                                <span>Procesos judiciales y administrativos optimizados mediante tecnología.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="bullet"></span>
+                            <div>
+                                <strong>Gestión Inteligente</strong>
+                                <span>Sistemas diseñados para acelerar la resolución de conflictos legales.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="eco-card client-card reveal-on-scroll" style="animation-delay: 0.2s;">
+                <div class="card-glow glow-white"></div>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-white"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <h3>Para el Cliente Final</h3>
+                    <p class="card-desc">Una experiencia digital sin fricciones para que tengan el control y la tranquilidad que buscan.</p>
+                    
+                    <ul class="eco-features">
+                        <li>
+                            <span class="bullet-white"></span>
+                            <div>
+                                <strong>Transparencia Total</strong>
+                                <span>El cliente puede ver el estado actualizado de su caso en todo momento.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="bullet-white"></span>
+                            <div>
+                                <strong>Trazabilidad Digital</strong>
+                                <span>Cada etapa y avance queda registrado y accesible en tiempo real.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    const observerEco = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.ecosystem-section .reveal-on-scroll').forEach((el) => {
+        observerEco.observe(el);
+    });
+</script>
+
+<style>
+    /* --- ESTRUCTURA GENERAL --- */
+    .ecosystem-section {
+        padding: 6rem 0;
+        background-color: var(--bg-main);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* --- HEADER --- */
+    .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .pill {
+        color: var(--accent);
+        font-size: 0.8rem; font-weight: 600;
+        letter-spacing: 2px; text-transform: uppercase;
+        margin-bottom: 0.8rem; display: block;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        line-height: 1.1; margin-bottom: 1.2rem;
+        color: var(--text-primary);
+    }
+
+    .text-gradient {
+        background: linear-gradient(to right, #fff, #94a3b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+        font-size: 1rem; color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    /* --- CARDS GRID --- */
+    .cards-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* --- TARJETAS BASE --- */
+    .eco-card {
+        position: relative;
+        background: rgba(15, 23, 42, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        padding: 2.5rem 2rem;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        
+        /* Animación inicial */
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .eco-card.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .eco-card:hover {
+        transform: translateY(-5px);
+        background: rgba(15, 23, 42, 0.6);
+        border-color: rgba(56, 189, 248, 0.2);
+    }
+
+    /* Resplandores de fondo */
+    .card-glow {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .glow-blue {
+        background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15) 0%, transparent 60%);
+    }
+
+    .glow-white {
+        background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+    }
+
+    .eco-card:hover .card-glow { opacity: 1; }
+
+    /* --- CONTENIDO TARJETAS --- */
+    .card-content {
+        position: relative;
+        z-index: 10;
+    }
+
+    .icon-wrapper {
+        width: 50px; height: 50px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex; align-items: center; justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .icon-blue { color: var(--accent); }
+    .icon-white { color: var(--text-primary); }
+
+    .eco-card h3 {
+        font-size: 1.8rem;
+        color: var(--text-primary);
+        margin-bottom: 0.8rem;
+    }
+
+    .card-desc {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* --- LISTA DE FUNCIONALIDADES --- */
+    .eco-features {
+        list-style: none; padding: 0; margin: 0;
+        display: flex; flex-direction: column; gap: 1.5rem;
+    }
+
+    .eco-features li {
+        display: flex; gap: 1rem; align-items: flex-start;
+    }
+
+    .bullet, .bullet-white {
+        width: 6px; height: 6px; border-radius: 50%;
+        margin-top: 8px; flex-shrink: 0;
+    }
+
+    .bullet { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+    .bullet-white { background: var(--text-primary); box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); }
+
+    .eco-features strong {
+        display: block; color: var(--text-primary); font-size: 1.05rem; margin-bottom: 0.3rem;
+    }
+
+    .eco-features span {
+        display: block; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;
+    }
+
+    /* --- MEDIA QUERIES --- */
+    @media (min-width: 768px) {
+        .ecosystem-section { padding: 8rem 0; }
+        h2 { font-size: 3rem; }
+    }
+
+    @media (min-width: 900px) {
+        .cards-wrapper {
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .eco-card {
+            padding: 3rem;
+        }
+
+        .eco-card h3 { font-size: 2rem; }
+    }
+</style>

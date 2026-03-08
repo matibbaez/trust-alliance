@@ -1,3 +1,7 @@
+---
+/* Hero.astro - Layout original + Gradiente Silicon Valley */
+---
+
 <section id="hero" class="hero">
     
     <div class="hero-bg">
@@ -10,27 +14,26 @@
         <div class="badge-wrapper animate-in" style="animation-delay: 0.1s">
             <span class="badge">
                 <span class="status-dot"></span>
-                Legal Tech Partners
+                Startup LegalTech
             </span>
         </div>
 
         <h1 class="animate-in" style="animation-delay: 0.2s">
-            Innovación jurídica <br class="desktop-break" />
-            <span class="gradient-text">sin margen de error.</span>
+            La nueva generación de <br class="desktop-break" />
+            <span class="gradient-text">servicios legales.</span>
         </h1>
 
         <p class="animate-in" style="animation-delay: 0.3s">
-            En <strong>Trust Alliance</strong> desarrollamos el ecosistema digital que tu firma necesita.
-            Seguridad de grado militar, creatividad estratégica y código de alto rendimiento.
+            Integramos derecho, inteligencia artificial y automatización para transformar los procesos en experiencias <strong>ágiles, transparentes y trazables</strong>. El futuro de la justicia comienza hoy.
         </p>
 
         <div class="actions animate-in" style="animation-delay: 0.4s">
             <a href="#contacto" class="btn-primary">
-                Iniciar Proyecto
+                Conocer la plataforma
                 <div class="shine"></div>
             </a>
             <a href="#soluciones" class="btn-secondary">
-                Conocer Servicios
+                Ver Soluciones
             </a>
         </div>
     </div>
@@ -130,25 +133,13 @@
         padding: 0 0.5rem;
     }
 
-    /* Reemplaza tu .gradient-text y @keyframes actual por esto: */
+    /* --- ESTE ES EL GRADIENTE GRIS/METÁLICO NUEVO --- */
     .gradient-text {
-        /* Color base fijo */
-        color: #38bdf8;
-        /* Sombra base sutil */
-        text-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
-        /* Animamos el brillo general */
-        animation: smooth-fade 4s ease-in-out infinite alternate;
-    }
-    
-    @keyframes smooth-fade {
-        0% {
-            filter: brightness(1); /* Celeste normal */
-            text-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
-        }
-        100% {
-            filter: brightness(1.6); /* Se vuelve casi blanco/celeste muy claro */
-            text-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
-        }
+        background: linear-gradient(180deg, #ffffff 0%, #71717a 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        /* Brillo suave para darle un poquito de volumen */
+        text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
     }
 
     p {
@@ -179,17 +170,16 @@
         font-weight: 700;
         font-size: 0.95rem;
         overflow: hidden;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición más suave */
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         width: 100%;
         border: 1px solid transparent;
         text-decoration: none;
         box-sizing: border-box;
     }
 
-    /* NUEVO HOVER PARA EL BOTÓN PRIMARIO */
     .btn-primary:hover {
         transform: translateY(-3px) scale(1.02);
-        box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4); /* Resplandor celeste */
+        box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
         background: #ffffff;
     }
 
@@ -219,10 +209,9 @@
         box-sizing: border-box;
     }
 
-    /* NUEVO HOVER PARA EL BOTÓN SECUNDARIO */
     .btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.1); /* Se aclara un poco el cristal */
-        border-color: rgba(56, 189, 248, 0.5); /* Borde se ilumina con el color principal */
+        background: rgba(255, 255, 255, 0.1); 
+        border-color: rgba(56, 189, 248, 0.5); 
         transform: translateY(-3px);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }

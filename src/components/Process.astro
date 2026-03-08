@@ -1,5 +1,5 @@
 ---
-/* Process.astro - Optimizado Mobile First */
+/* Process.astro - Diseño Original + Scroll Focus Functionality */
 ---
 
 <section id="metodo" class="process-section">
@@ -8,45 +8,47 @@
             
             <div class="sticky-wrapper">
                 <div class="sticky-content">
-                    <span class="pill">El Blueprint</span>
-                    <h2>Ingeniería de <br><span class="text-gradient">Precisión</span></h2>
+                    <span class="pill">Nuestra Visión</span>
+                    <h2>El futuro nos une <br><span class="text-gradient">en el presente</span></h2>
                     <p class="description">
-                        No improvisamos. Aplicamos un protocolo de desarrollo riguroso, diseñado para mitigar riesgos y maximizar el impacto desde el día uno.
+                        Creemos en un sistema legal más accesible, transparente y eficiente. Nuestra misión es construir una red que conecte conocimiento jurídico, innovación digital y soluciones concretas.
                     </p>
-                    <a href="#contacto" class="btn-outline">Iniciar Auditoría →</a>
+                    <a href="#contacto" class="btn-outline">Sumate al futuro →</a>
                 </div>
             </div>
 
             <div class="steps-wrapper">
-                <div class="timeline-line"></div> <div class="step-card reveal-on-scroll">
+                <div class="timeline-line"></div> 
+                
+                <div class="step-card reveal-on-scroll">
                     <div class="step-number">01</div>
                     <div class="step-content">
-                        <h3>Diagnóstico Legal & Técnico</h3>
-                        <p>Analizamos la infraestructura actual y los cuellos de botella operativos de la firma. Entendemos la necesidad jurídica antes de escribir una línea de código.</p>
+                        <h3>Procesos más rápidos</h3>
+                        <p>Sistemas diseñados para acelerar la resolución de conflictos legales, eliminando la burocracia y haciendo el trabajo más eficiente.</p>
                     </div>
                 </div>
 
                 <div class="step-card reveal-on-scroll">
                     <div class="step-number">02</div>
                     <div class="step-content">
-                        <h3>Arquitectura Blindada</h3>
-                        <p>Diseñamos la solución priorizando la seguridad de datos (Data Privacy). Definimos stacks tecnológicos escalables y protocolos de encriptación.</p>
+                        <h3>Transparencia total</h3>
+                        <p>Claridad absoluta en cada etapa del caso. El cliente dispone de información clara y permanente sobre el estado de su trámite.</p>
                     </div>
                 </div>
 
                 <div class="step-card reveal-on-scroll">
                     <div class="step-number">03</div>
                     <div class="step-content">
-                        <h3>Desarrollo Ágil</h3>
-                        <p>Sprints de trabajo quincenales. Vas viendo el progreso real del software. Feedback continuo para ajustar el rumbo sin perder tiempo.</p>
+                        <h3>Trazabilidad digital</h3>
+                        <p>Cada acción, documento y avance queda registrado de forma segura y accesible, para que no se pierda ningún detalle del proceso.</p>
                     </div>
                 </div>
 
                 <div class="step-card reveal-on-scroll">
                     <div class="step-number">04</div>
                     <div class="step-content">
-                        <h3>Despliegue & Soporte</h3>
-                        <p>Lanzamiento controlado. Capacitación al equipo legal y soporte técnico 24/7 para asegurar que la operación nunca se detenga.</p>
+                        <h3>Conexión inteligente</h3>
+                        <p>Unimos a clientes y abogados a través de una plataforma avanzada, transformando la experiencia jurídica tradicional en algo moderno y simple.</p>
                     </div>
                 </div>
 
@@ -56,14 +58,24 @@
 </section>
 
 <script>
-    // Script para animar la aparición de los pasos
+    // Configuración para que el paso se ilumine SOLO cuando está en el medio de la pantalla
+    const observerOptions = {
+        root: null,
+        rootMargin: "-25% 0px -25% 0px", // Margen superior e inferior (activa en el centro)
+        threshold: 0.1
+    };
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Entra al centro: Se enciende
                 entry.target.classList.add('active');
+            } else {
+                // Sale del centro: Se apaga (este es el truco para que "pasen" los números)
+                entry.target.classList.remove('active');
             }
         });
-    }, { threshold: 0.2 });
+    }, observerOptions);
 
     document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
         observer.observe(el);
@@ -150,7 +162,7 @@
     .step-card {
         margin-bottom: 3.5rem; /* Espacio reducido en mobile */
         opacity: 0.3; 
-        transform: translateY(20px); /* Animación vertical en mobile es más natural */
+        transform: translateY(20px) scale(0.95); /* Animación vertical y escala */
         transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         display: flex; 
         flex-direction: column; /* Stack vertical en mobile */
@@ -161,9 +173,10 @@
 
     .step-card:last-child { margin-bottom: 0; }
 
+    /* ESTADO ACTIVO AL SCROLLEAR */
     .step-card.active {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 
     .step-number {
@@ -173,9 +186,10 @@
         color: transparent;
         -webkit-text-stroke: 1px rgba(255,255,255,0.2);
         line-height: 1;
-        transition: 0.3s;
+        transition: 0.5s ease;
     }
 
+    /* EFECTO DE NÚMERO ILUMINADO CON TU AZUL */
     .step-card.active .step-number {
         -webkit-text-stroke: 1px var(--accent);
         text-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
@@ -183,8 +197,17 @@
 
     .step-content { padding-top: 0; max-width: 500px; }
 
-    .step-content h3 { font-size: 1.5rem; margin-bottom: 0.8rem; color: var(--text-primary); }
-    .step-content p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
+    .step-content h3 { 
+        font-size: 1.5rem; 
+        margin-bottom: 0.8rem; 
+        color: var(--text-primary); 
+    }
+    
+    .step-content p { 
+        font-size: 0.95rem; 
+        color: var(--text-secondary); 
+        line-height: 1.6; 
+    }
 
 
     /* --- TABLET & DESKTOP (> 900px) --- */
@@ -201,7 +224,7 @@
         /* Izquierda Sticky */
         .sticky-content {
             position: sticky;
-            top: 150px;
+            top: 30%; /* Centrado en pantalla */
             padding-right: 2rem;
             text-align: left; /* Alineación izquierda original */
         }
@@ -209,7 +232,7 @@
         h2 { font-size: 3.5rem; }
         .description { margin-left: 0; margin-right: 0; font-size: 1.1rem; }
 
-        /* Steps wrapper con línea lateral */
+        /* Steps wrapper con tu línea original */
         .steps-wrapper {
             padding-left: 2rem;
             border-left: 1px solid rgba(255,255,255,0.05);
@@ -218,8 +241,8 @@
         .timeline-line {
             display: block;
             position: absolute; left: -1px; top: 0;
-            width: 1px; height: 150px;
-            background: linear-gradient(to bottom, var(--accent), transparent);
+            width: 1px; height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--accent) 50%, transparent);
             box-shadow: 0 0 10px var(--accent);
             z-index: 10;
         }
@@ -230,11 +253,13 @@
             gap: 2rem;
             align-items: flex-start;
             text-align: left;
-            margin-bottom: 6rem;
-            transform: translateX(30px); /* Animación horizontal */
+            margin-bottom: 8rem;
+            transform: translateX(30px) scale(0.95); /* Animación horizontal */
         }
 
-        .step-card.active { transform: translateX(0); }
+        .step-card.active { 
+            transform: translateX(0) scale(1); 
+        }
 
         .step-number { font-size: 4rem; }
         .step-content { padding-top: 1rem; }
