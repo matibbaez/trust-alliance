@@ -1,4 +1,8 @@
 ---
+// 1. Importar Image y el logo
+import { Image } from 'astro:assets';
+import logoTrust from '../assets/trust-logo.png';
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -23,7 +27,14 @@ const currentYear = new Date().getFullYear();
         <div class="footer-grid">
             
             <div class="brand-col">
-                <div class="logo">TRUST<span class="dot">.</span></div>
+                <div class="logo-footer">
+                    <Image 
+                        src={logoTrust} 
+                        alt="Trust Alliance Logo" 
+                        height={60} 
+                        format="webp"
+                    />
+                </div>
                 <p>Soluciones digitales innovadoras y seguras para el sector jurídico.</p>
                 <div class="socials">
                     <a href="https://instagram.com/trustalliance" target="_blank" class="social-link">Instagram</a>
@@ -174,6 +185,27 @@ const currentYear = new Date().getFullYear();
         padding-top: 2rem;
         display: flex; flex-direction: column; gap: 1rem;
         text-align: center; font-size: 0.8rem; color: var(--text-secondary);
+    }
+
+    /* 3. Estilo para el contenedor del logo en el footer */
+    .logo-footer {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    /* Aseguramos que la imagen mantenga proporción */
+    .logo-footer img {
+        width: auto;
+        height: auto;
+        max-height: 60px; /* Controlamos el tamaño máximo */
+    }
+
+    /* En mobile lo podemos dejar un pelín más chico si querés */
+    @media (max-width: 768px) {
+        .logo-footer img {
+            max-height: 50px;
+        }
     }
 
     /* --- DESKTOP OVERRIDES (min-width: 900px) --- */

@@ -1,8 +1,20 @@
+---
+// Importamos la herramienta de imagen de Astro y el nuevo logo
+import { Image } from 'astro:assets';
+import logoTrust from '../assets/trust-logo.png';
+---
+
 <header id="navbar" class="nav-island">
     <div class="nav-container">
         
         <a href="/#hero" class="logo">
-            TRUST<span class="dot">.</span>
+            <Image 
+                src={logoTrust} 
+                alt="Trust Alliance Logo" 
+                height={50}
+                format="webp"
+                class="nav-logo-img"
+            />
         </a>
 
         <nav class="desktop-menu">
@@ -82,7 +94,7 @@
         
         /* En mobile, ocupamos casi todo el ancho */
         width: 90%; 
-        height: 56px;
+        height: 70px;
         
         background: rgba(15, 23, 42, 0.6);
         backdrop-filter: blur(16px);
@@ -107,14 +119,19 @@
     }
 
     .logo {
-        font-family: var(--font-heading);
-        font-weight: 800;
-        font-size: 1.2rem;
-        color: var(--text-primary);
-        letter-spacing: -0.02em;
-        z-index: 1001; /* Sobre el overlay */
+        display: flex;
+        align-items: center;
+        padding: 5px 0;
     }
-    .dot { color: var(--accent); }
+
+    .nav-logo-img {
+        width: auto; /* Para que mantenga la proporción */
+        transition: transform 0.3s ease;
+    }
+
+    .nav-island.expanded .nav-logo-img {
+        transform: scale(0.9);
+    }
 
     /* Ocultamos menú desktop en mobile */
     .desktop-menu, .desktop-only { display: none; }
@@ -172,8 +189,8 @@
     @media (min-width: 900px) {
         .nav-island {
             top: 2rem;
-            width: 680px; /* Tamaño inicial Desktop */
-            height: 64px;
+            height: 80px; /* Un poco más alta en desktop para el logo grande */
+            width: 720px;
         }
 
         /* Lógica de expansión SOLO en Desktop */
@@ -181,6 +198,7 @@
             width: 94%; max-width: 1400px; top: 1rem;
             background: rgba(2, 6, 23, 0.85);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            height: 70px;
         }
 
         .nav-container { padding: 0 2rem; }
