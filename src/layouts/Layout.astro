@@ -3,21 +3,34 @@ import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
 interface Props {
-	title: string;
+    title: string;
 }
 const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<title>{title}</title>
-		<meta name="viewport" content="width=device-width" />
+    <head>
+        <meta charset="UTF-8" />
+        <title>{title}</title>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
         <meta name="description" content="Trust Alliance - Soluciones Digitales Jurídicas" />
-        
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://trustalliance.ar/" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content="Trust Alliance - Soluciones Digitales Jurídicas" />
+        <meta property="og:image" content="https://trustalliance.ar/trust-logo.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content="Trust Alliance - Soluciones Digitales Jurídicas" />
+        <meta name="twitter:image" content="https://trustalliance.ar/trust-logo.png" />
         <ClientRouter /> 
-	</head>
+    </head>
 	<body>
 		<slot />
         
