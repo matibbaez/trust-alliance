@@ -1,5 +1,5 @@
 ---
-/* Ecosystem.astro - Sección Dual Target */
+/* Ecosystem.astro - Sección Dual Target (Sin animaciones de scroll) */
 ---
 
 <section id="ecosistema" class="ecosystem-section">
@@ -14,7 +14,7 @@
 
         <div class="cards-wrapper">
             
-            <div class="eco-card firm-card reveal-on-scroll">
+            <div class="eco-card firm-card">
                 <div class="card-glow glow-blue"></div>
                 <div class="card-content">
                     <div class="icon-wrapper">
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div class="eco-card client-card reveal-on-scroll" style="animation-delay: 0.2s;">
+            <div class="eco-card client-card">
                 <div class="card-glow glow-white"></div>
                 <div class="card-content">
                     <div class="icon-wrapper">
@@ -73,20 +73,6 @@
         </div>
     </div>
 </section>
-
-<script>
-    const observerEco = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.ecosystem-section .reveal-on-scroll').forEach((el) => {
-        observerEco.observe(el);
-    });
-</script>
 
 <style>
     /* --- ESTRUCTURA GENERAL --- */
@@ -132,7 +118,8 @@
     }
 
     .subtitle {
-        font-size: 1rem; color: var(--text-secondary);
+        font-size: 1rem;
+        color: var(--text-secondary);
         line-height: 1.6;
     }
 
@@ -152,15 +139,7 @@
         padding: 2.5rem 2rem;
         overflow: hidden;
         transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        
-        /* Animación inicial */
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    .eco-card.active {
-        opacity: 1;
-        transform: translateY(0);
+        /* Eliminamos opacity: 0 y transform: translateY */
     }
 
     .eco-card:hover {
@@ -223,7 +202,8 @@
 
     /* --- LISTA DE FUNCIONALIDADES --- */
     .eco-features {
-        list-style: none; padding: 0; margin: 0;
+        list-style: none;
+        padding: 0; margin: 0;
         display: flex; flex-direction: column; gap: 1.5rem;
     }
 
@@ -240,11 +220,13 @@
     .bullet-white { background: var(--text-primary); box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); }
 
     .eco-features strong {
-        display: block; color: var(--text-primary); font-size: 1.05rem; margin-bottom: 0.3rem;
+        display: block; color: var(--text-primary); font-size: 1.05rem;
+        margin-bottom: 0.3rem;
     }
 
     .eco-features span {
-        display: block; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;
+        display: block; color: var(--text-secondary);
+        font-size: 0.9rem; line-height: 1.5;
     }
 
     /* --- MEDIA QUERIES --- */

@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
+import { Image } from 'astro:assets';
+import imgReclamarte from '../../assets/reclamarte-image-desktop.png';
 ---
 
 <Layout title="Caso de Estudio: ReclamARTe | Trust Alliance">
@@ -39,7 +41,7 @@ import Footer from '../../components/Footer.astro';
                                 <span class="dot yellow"></span>
                                 <span class="dot green"></span>
                             </div>
-                            <img src="/reclamarte-image-desktop.png" alt="Dashboard de ReclamARTe" class="project-img" />
+                            <Image src={imgReclamarte} alt="Dashboard de ReclamARTe" class="project-img" />
                         </div>
                     </div>
                 </div>

@@ -78,18 +78,24 @@
 </section>
 
 <script>
-    const cardsContainer = document.getElementById("cards");
-    if (cardsContainer) {
-        cardsContainer.onmousemove = (e) => {
-            for (const card of document.getElementsByClassName("card")) {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
-                (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
-            }
-        };
-    }
+    document.addEventListener('astro:page-load', () => {
+        const cardsContainer = document.getElementById("cards");
+        
+        // Detectamos si es una pantalla grande (Desktop/Notebook)
+        const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+
+        if (cardsContainer && isDesktop) {
+            cardsContainer.onmousemove = (e) => {
+                for (const card of document.getElementsByClassName("card")) {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
+                    (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
+                }
+            };
+        }
+    });
 </script>
 
 <style>

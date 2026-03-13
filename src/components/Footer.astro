@@ -26,9 +26,9 @@ const currentYear = new Date().getFullYear();
                 <div class="logo">TRUST<span class="dot">.</span></div>
                 <p>Soluciones digitales innovadoras y seguras para el sector jurídico.</p>
                 <div class="socials">
-                    <a href="https://instagram.com/trustalliance.ar" target="_blank" class="social-link">Instagram</a>
-                    <a href="#" class="social-link">LinkedIn</a>
-                    <a href="mailto:info@trustalliance.ar" class="social-link">Email</a>
+                    <a href="https://instagram.com/trustalliance" target="_blank" class="social-link">Instagram</a>
+                    <a href="https://reclamaya.ar" target="_blank" class="social-link">ReclamaYA</a>
+                    <a href="https://reclamarte.ar" target="_blank" class="social-link">ReclamARTe</a>
                 </div>
             </div>
 
@@ -43,10 +43,9 @@ const currentYear = new Date().getFullYear();
                 </div>
 
                 <div class="nav-col">
-                    <h4>Legales</h4>
+                    <h4>Contacto</h4>
                     <ul>
-                        <li><a href="#">Privacidad</a></li>
-                        <li><a href="#">Términos</a></li>
+                        <li><a href="mailto:contacto@trustalliance.ar">contacto@trustalliance.ar</a></li>
                     </ul>
                 </div>
             </div>
@@ -131,7 +130,7 @@ const currentYear = new Date().getFullYear();
     .logo { font-family: var(--font-heading); font-weight: 800; font-size: 1.5rem; }
     .dot { color: var(--accent); }
 
-    .socials { display: flex; gap: 1.5rem; }
+    .socials { display: flex; gap: 1.5rem; flex-wrap: wrap; }
     .social-link {
         font-size: 0.9rem; font-weight: 600; color: var(--text-primary); position: relative;
     }
@@ -145,8 +144,11 @@ const currentYear = new Date().getFullYear();
     .nav-col ul { list-style: none; padding: 0; margin: 0; }
     .nav-col li { margin-bottom: 0.8rem; }
     .nav-col a { color: var(--text-secondary); transition: 0.3s; font-size: 0.9rem; }
+    
+    /* Para que el mail largo no se rompa en mobile */
+    .nav-col a[href^="mailto"] { word-break: break-all; }
 
-    /* --- BIG TEXT (CORREGIDO) --- */
+    /* --- BIG TEXT --- */
     .big-text-wrapper {
         display: flex; justify-content: center; margin-bottom: 2rem;
         opacity: 0.1; pointer-events: none; user-select: none;

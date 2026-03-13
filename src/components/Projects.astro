@@ -1,5 +1,8 @@
 ---
 /* Projects.astro - Optimizado para Mobile & Notebooks */
+import { Image } from 'astro:assets';
+import imgReclamarte from '../assets/reclamarte-image-desktop.png';
+import imgReclamaya from '../assets/reclamaya-imagen-mobile.png';
 ---
 
 <section id="proyectos" class="projects-section">
@@ -45,8 +48,8 @@
                             <span class="dot yellow"></span>
                             <span class="dot green"></span>
                         </div>
-                        <img 
-                            src="/reclamarte-image-desktop.png" 
+                        <Image 
+                            src={imgReclamarte} 
                             alt="Interfaz de ReclamARTe" 
                             class="project-img"
                         />
@@ -83,9 +86,8 @@
                     <div class="glow-effect secondary"></div>
                     
                     <div class="mobile-frame">
-                        <div class="notch"></div>
-                        <img 
-                            src="/reclamaya-imagen-mobile.png" 
+                        <Image 
+                            src={imgReclamaya} 
                             alt="App ReclamaYA en celular" 
                             class="project-img"
                         />
@@ -139,10 +141,6 @@
     .project-card {
         display: flex; flex-direction: column; gap: 3rem;
     }
-    
-    /* En mobile el orden siempre es: Visual primero, contenido después (opcional, aquí lo dejamos normal) 
-       Pero si quisieras visual primero: .project-visual { order: -1; } 
-    */
 
     /* --- TEXT CONTENT --- */
     .project-content h3 { font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary); }
@@ -203,7 +201,6 @@
         transform: rotateY(-2deg) rotateX(2deg);
         transition: transform 0.6s ease;
     }
-    /* En mobile desactivamos el efecto hover 3D intenso para evitar saltos */
     
     .browser-header {
         background: rgba(255,255,255,0.05);
@@ -224,14 +221,6 @@
         overflow: hidden;
         transform: rotateY(5deg);
         transition: transform 0.6s ease;
-    }
-
-    .notch {
-        position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-        width: 80px; height: 20px;
-        background: #1e293b;
-        border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
-        z-index: 2;
     }
 
     /* --- IMAGENES --- */

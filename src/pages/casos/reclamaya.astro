@@ -2,15 +2,17 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
+import { Image } from 'astro:assets';
+import imgReclamaya from '../../assets/reclamaya-imagen-mobile.png';
 ---
 
 <Layout title="Caso de Estudio: ReclamaYA | Trust Alliance">
-	<Navbar />
-	
-	<main class="case-wrapper reclamaya-theme">
+    <Navbar />
+    
+    <main class="case-wrapper reclamaya-theme">
         <div class="ambient-glow"></div>
 
-		<section class="case-hero">
+        <section class="case-hero">
             <div class="container">
                 <a href="/#proyectos" class="back-link animate-in" style="animation-delay: 0.1s">
                     <span class="arrow">←</span> Volver a Proyectos
@@ -34,8 +36,7 @@ import Footer from '../../components/Footer.astro';
                     <div class="hero-visual animate-in" style="animation-delay: 0.6s">
                         <div class="glow-effect"></div>
                         <div class="mobile-glass-frame">
-                            <div class="notch"></div>
-                            <img src="/reclamaya-imagen-mobile.png" alt="App ReclamaYA en celular" class="project-img" />
+                            <Image src={imgReclamaya} alt="App ReclamaYA en celular" class="project-img" />
                         </div>
                     </div>
                 </div>
@@ -106,7 +107,7 @@ import Footer from '../../components/Footer.astro';
                 </div>
             </div>
         </section>
-	</main>
+    </main>
 
     <Footer />
 </Layout>
@@ -236,11 +237,11 @@ import Footer from '../../components/Footer.astro';
         opacity: 0.15; filter: blur(80px); border-radius: 50%;
     }
     
-    /* Marco estilo iPhone */
+    /* Marco estilo iPhone (Sin Notch) */
     .mobile-glass-frame {
         position: relative; z-index: 1;
         width: 280px; /* Ancho típico de un mockup de celular */
-        background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px);
+        background: #000; /* Fondo negro para el efecto infinity */
         border: 8px solid #1e293b; /* Borde grueso simulando el teléfono */
         border-radius: 40px;
         overflow: hidden; 
@@ -249,14 +250,6 @@ import Footer from '../../components/Footer.astro';
         transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .mobile-glass-frame:hover { transform: rotateY(0) rotateX(0) scale(1.03); }
-    
-    /* Muesca del celular (Notch) */
-    .notch {
-        position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-        width: 100px; height: 24px; background: #1e293b;
-        border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
-        z-index: 10;
-    }
 
     .project-img { width: 100%; height: auto; display: block; }
 
