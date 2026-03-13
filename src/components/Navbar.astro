@@ -11,8 +11,10 @@ import logoTrust from '../assets/trust-logo.png';
             <Image 
                 src={logoTrust} 
                 alt="Trust Alliance Logo" 
-                height={50}
-                format="webp"
+                height={50}    
+                width={150}   
+                quality="max"   
+                format="png"    
                 class="nav-logo-img"
             />
         </a>
@@ -125,8 +127,15 @@ import logoTrust from '../assets/trust-logo.png';
     }
 
     .nav-logo-img {
-        width: auto; /* Para que mantenga la proporción */
-        transition: transform 0.3s ease;
+        width: auto;
+        height: 50px;
+        /* Esto ayuda a mantener la nitidez en bordes */
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        
+        /* Evitamos que el navegador intente "mejorar" la imagen y la cague */
+        backface-visibility: hidden;
+        transform: translateZ(0);
     }
 
     .nav-island.expanded .nav-logo-img {
